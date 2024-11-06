@@ -1,0 +1,131 @@
+// Clasa Piese_Auto
+public class PiesaAuto {
+    private int id_piesa;
+    private String cod_piesa;
+    private String denumire;
+    private String producator;
+    private String model_compatibil;
+    private int an_fabricatie;
+    private double pret;
+    private int stoc;
+    private String locatie_depozit;
+    private int garantie_luni;
+    private String certificari;
+    private String descriere_tehnica;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Clienti
+public class Client {
+    private int id_client;
+    private String nume;
+    private String prenume;
+    private String telefon;
+    private String email;
+    private String tip_client;
+    private String adresa;
+    private String istoric_comenzi;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Comanda
+public class Comanda {
+    private int id_comanda;
+    private int id_client;
+    private Date data_comanda;
+    private double valoare_totala;
+    private String status_comanda;
+    private String detalii_livrare;
+    private String documente_asociate;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Comenzi_Produse
+public class ComandaProdus {
+    private int id_comanda;
+    private int id_piesa;
+    private int cantitate;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Furnizori
+public class Furnizor {
+    private int id_furnizor;
+    private String nume_firma;
+    private String persoana_contact;
+    private String telefon;
+    private String email;
+    private String adresa;
+    private String categorie_produse;
+    private String termeni_colaborare;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Angajati
+public class Angajat {
+    private int id_angajat;
+    private String nume;
+    private String prenume;
+    private String functie;
+    private String departament;
+    private String telefon;
+    private String email;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Comenzi_Angajati
+public class ComandaAngajat {
+    private int id_comanda;
+    private int id_angajat;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Furnizori_Piese
+public class FurnizorPiesa {
+    private int id_furnizor;
+    private int id_piesa;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Istoric_Comenzi
+public class IstoricComanda {
+    private int id_istoric;
+    private int id_comanda;
+    private Date data_eveniment;
+    private String eveniment;
+    private String detalii;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Reclamatii
+public class Reclamatie {
+    private int id_reclamatie;
+    private int id_comanda;
+    private int id_piesa;
+    private Date data_reclamatie;
+    private String motiv;
+    private String rezolutie;
+
+    // Constructori, getteri, setteri, toString()
+}
+
+// Clasa Interactiuni_Client_Angajat
+public class InteractiuneClientAngajat {
+    private int id_interactiune;
+    private int id_client;
+    private int id_angajat;
+    private Date data_interactiune;
+    private String tip_interactiune;
+    private String detalii;
+
+    // Constructori, getteri, setteri, toString()
+}

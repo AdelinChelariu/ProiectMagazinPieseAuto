@@ -1,0 +1,114 @@
+Descriere Detaliată a Rolurilor
+1. Administrator Sistem
+Este responsabil de întreaga infrastructură tehnică a sistemului. Acest rol este crucial pentru:
+
+Crearea și gestionarea conturilor pentru toți angajații
+Setarea nivelurilor de acces și a permisiunilor
+Mentenanța sistemului și rezolvarea problemelor tehnice
+Asigurarea securității datelor și realizarea copiilor de backup
+Monitorizarea performanței sistemului
+Implementarea actualizărilor și modificărilor tehnice
+
+2. Manager Magazin
+Este persoana care coordonează întreaga activitate a magazinului:
+
+Supervizează toate operațiunile zilnice
+Analizează rapoartele de vânzări și ia decizii strategice
+Stabilește obiectivele de vânzări și monitorizează performanța
+Gestionează relațiile cu furnizorii mari
+Aprobă reducerile speciale și promoțiile
+Coordonează echipa și asigură buna funcționare a magazinului
+
+3. Agent Vânzări
+Este în prima linie a interacțiunii cu clienții:
+
+Oferă consultanță clienților în alegerea pieselor potrivite
+Procesează comenzile și facturile
+Gestionează plățile și retururile
+Menține relația cu clienții fideli
+Oferă informații despre produse și disponibilitate
+Aplică discount-urile conform politicilor companiei
+
+4. Gestionar Depozit
+Se ocupă de gestiunea fizică a stocului:
+
+Organizează și monitorizează stocul de piese
+Primește și verifică marfa nouă
+Pregătește comenzile pentru livrare
+Efectuează inventarul periodic
+Menține organizarea depozitului
+Raportează problemele legate de stoc sau calitatea produselor
+
+5. Operator Achiziții
+Responsabil de aprovizionarea magazinului:
+
+Monitorizează nivelul stocurilor
+Plasează comenzi către furnizori
+Negociază prețuri și condiții de livrare
+Urmărește statusul comenzilor
+Actualizează catalogul de produse
+Gestionează relația cu furnizorii
+
+6. Contabil
+Se ocupă de aspectele financiare:
+
+Procesează facturile și plățile
+Ține evidența contabilă
+Generează rapoarte financiare
+Calculează și raportează TVA
+Gestionează salariile
+Urmărește creanțele și datoriile
+
+7. Operator Service
+Oferă suport tehnic specializat:
+
+Oferă consultanță tehnică detaliată
+Verifică compatibilitatea pieselor
+Gestionează garanțiile
+Oferă soluții pentru probleme tehnice
+Colaborează cu service-urile partenere
+Oferă estimări pentru reparații
+
+8. Client (Utilizator extern)
+Are acces la interfața pentru clienți:
+
+Vizualizează catalogul de produse și prețuri
+Verifică disponibilitatea pieselor
+Plasează comenzi online
+Urmărește statusul comenzilor
+Accesează istoricul comenzilor
+Solicită suport tehnic
+
+9. Curier/Șofer
+Se ocupă de livrarea comenzilor:
+
+Preia comenzile din depozit
+Livrează comenzile la clienți
+Procesează documentele de transport
+Colectează plățile (când e cazul)
+Raportează statusul livrărilor
+Gestionează retururile de la clienți
+
+Interacțiuni între Roluri
+Fluxul unei Comenzi Tipice:
+
+Clientul plasează o comandă
+Agentul de Vânzări procesează comanda
+Gestionarul de Depozit pregătește produsele
+Contabilul procesează factura
+Curierul livrează comanda
+
+Fluxul de Aprovizionare:
+
+Gestionarul raportează stoc scăzut
+Operatorul de Achiziții plasează comanda
+Managerul aprobă comanda mare
+Contabilul procesează plata
+Gestionarul recepționează marfa
+
+Politici de Securitate
+Niveluri de Aprobare:
+
+Manager: Aprobări peste 5000 RON
+Agent Vânzări: Discount-uri până la 10%
+Operator Achiziții: Comenzi până la 10000 RON

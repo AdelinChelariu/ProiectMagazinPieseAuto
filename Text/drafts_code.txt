@@ -1,0 +1,192 @@
+// Model pentru piese auto
+public class PiesaAuto {
+    private int id;
+    private String denumire;
+    private String codPiesa;
+    private double pret;
+    private int stoc;
+    
+    // Constructori
+    public PiesaAuto(int id, String denumire, String codPiesa, double pret, int stoc) {
+        this.id = id;
+        this.denumire = denumire;
+        this.codPiesa = codPiesa;
+        this.pret = pret;
+        this.stoc = stoc;
+    }
+    
+    // Getters și Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    
+    public String getDenumire() { return denumire; }
+    public void setDenumire(String denumire) { this.denumire = denumire; }
+    
+    public String getCodPiesa() { return codPiesa; }
+    public void setCodPiesa(String codPiesa) { this.codPiesa = codPiesa; }
+    
+    public double getPret() { return pret; }
+    public void setPret(double pret) { this.pret = pret; }
+    
+    public int getStoc() { return stoc; }
+    public void setStoc(int stoc) { this.stoc = stoc; }
+}
+
+// Clasă pentru conexiunea la baza de date
+public class DatabaseConnection {
+    private Connection connection;
+    private static final String URL = "jdbc:mysql://localhost:3306/magazin_piese";
+    private static final String USER = "root";
+    private static final String PASSWORD = "parola";
+    
+    public Connection getConnection() throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (ClassNotFoundException e) {
+                throw new SQLException("Driver MySQL nu a fost găsit", e);
+            }
+        }
+        return connection;
+    }
+    
+    public void closeConnection() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            System.err.println("Eroare la închiderea conexiunii: " + e.getMessage());
+        }
+    }
+}
+
+// Repository pentru operații CRUD cu piese auto
+public class PiesaAutoRepository {
+    private DatabaseConnection dbConnection;
+    
+    public PiesaAutoRepository() {
+        this.dbConnection = new DatabaseConnection();
+    }
+    
+    public void adaugaPiesa(PiesaAuto piesa) throws SQLException {
+        String query = "INSERT INTO piese_auto (denumire, cod_piesa, pret, stoc) VALUES (?, ?, ?, ?)";
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, piesa.getDenumire());
+            pstmt.setString(2, piesa.getCodPiesa());
+            pstmt.setDouble(3, piesa.getPret());
+            pstmt.setInt(4, piesa.getStoc());
+            pstmt.executeUpdate();
+        }
+    }
+    
+    public PiesaAuto getPiesaById(int id) throws SQLException {
+        String query = "SELECT * FROM piese_auto WHERE id = ?";
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new PiesaAuto(
+                    rs.getInt("id"),
+                    rs.getString("denumire"),
+                    rs.getString("cod_piesa"),
+                    rs.getDouble("pret"),
+                    rs.getInt("stoc")
+                );
+            }
+        }
+        return null;
+    }
+}
+
+
+
+
+// Enumerare pentru roluri
+public enum UserRole {
+    ADMIN,
+    MANAGER,
+    SALES_AGENT,
+    WAREHOUSE_MANAGER,
+    PURCHASING_OPERATOR,
+    ACCOUNTANT,
+    SERVICE_OPERATOR,
+    CLIENT,
+    COURIER;
+}
+
+// Enumerare pentru permisiuni
+public enum Permission {
+    VIEW_USERS,
+    MANAGE_USERS,
+    VIEW_REPORTS,
+    MANAGE_SALES,
+    MANAGE_INVENTORY,
+    MANAGE_SUPPLIERS,
+    VIEW_CATALOG,
+    MODIFY_PRICES,
+    PROVIDE_SUPPORT;
+}
+
+// Clasa pentru utilizator
+public class User {
+    private int id;
+    private String username;
+    private String password;
+    private Set<UserRole> roles;
+    private Set<Permission> permissions;
+
+    public User(int id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.roles = new HashSet<>();
+        this.permissions = new HashSet<>();
+    }
+
+    public void addRole(UserRole role) {
+        roles.add(role);
+        // Adăugăm permisiunile asociate rolului
+        permissions.addAll(getRolePermissions(role));
+    }
+
+    public boolean hasPermission(Permission permission) {
+        return permissions.contains(permission);
+    }
+
+    private Set<Permission> getRolePermissions(UserRole role) {
+        Set<Permission> rolePermissions = new HashSet<>();
+        switch (role) {
+            case ADMIN:
+                rolePermissions.addAll(Arrays.asList(Permission.values()));
+                break;
+            case MANAGER:
+                rolePermissions.addAll(Arrays.asList(
+                    Permission.VIEW_REPORTS,
+                    Permission.MANAGE_SALES,
+                    Permission.MANAGE_INVENTORY,
+                    Permission.MODIFY_PRICES
+                ));
+                break;
+            // Adăugați permisiuni pentru celelalte roluri
+        }
+        return rolePermissions;
+    }
+}
+
+// Serviciu pentru autentificare și autorizare
+public class SecurityService {
+    public boolean isAuthorized(User user, Permission permission) {
+        return user.hasPermission(permission);
+    }
+
+    public void checkPermission(User user, Permission permission) throws SecurityException {
+        if (!isAuthorized(user, permission)) {
+            throw new SecurityException("User " + user.getUsername() + 
+                " does not have permission: " + permission);
+        }
+    }
+}
