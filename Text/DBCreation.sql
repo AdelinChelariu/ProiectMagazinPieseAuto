@@ -1,5 +1,3 @@
--- Creare Tabele
-
 CREATE TABLE Piese_Auto (
   id_piesa INT PRIMARY KEY,
   cod_piesa VARCHAR(50) UNIQUE NOT NULL,
@@ -136,48 +134,3 @@ CREATE TABLE Users (
         (id_client IS NOT NULL AND id_angajat IS NULL AND role = 'CLIENT')
     )
 );
-
-
-
-
-
-
--- Populare Tabel Piese_Auto
-INSERT INTO Piese_Auto (id_piesa, cod_piesa, denumire, producator, model_compatibil, an_fabricatie, pret, stoc, locatie_depozit, garantie_luni, certificari, descriere_tehnica)
-VALUES
-  (1, 'P001', 'Filtru de ulei', 'Bosch', 'Toyota Corolla 2015-2020', 2019, 25.99, 50, 'Depozit A', 12, 'ISO 9001, ACEA', 'Filtru de ulei de înaltă calitate pentru vehicule Toyota Corolla'),
-  (2, 'P002', 'Disc de frână', 'ATE', 'Volkswagen Golf VI', 2011, 59.99, 30, 'Depozit B', 24, 'ECE R90', 'Disc de frână ventilat pentru Volkswagen Golf VI'),
-  (3, 'P003', 'Bujie', 'NGK', 'Ford Focus 2012-2017', 2014, 4.99, 100, 'Depozit C', 6, 'EN 6700', 'Set de bujii pentru Ford Focus');
-
--- Populare Tabel Clienti  
-INSERT INTO Clienti (id_client, nume, prenume, telefon, email, tip_client, adresa, istoric_comenzi)
-VALUES
-  (1, 'Popescu', 'Ion', '+40721234567', 'ion.popescu@email.com', 'Persoana Fizica', 'Strada Principală nr. 10, București', NULL),
-  (2, 'Service Auto SRL', 'Marian Ionescu', '+40741987654', 'office@serviceauto.ro', 'Service Auto', 'Calea Victoriei nr. 25, Cluj-Napoca', NULL),
-  (3, 'Dumitrescu', 'Ana', '+40723456789', 'ana.dumitrescu@gmail.com', 'Persoana Fizica', 'Bulevardul Aviatorilor nr. 15, Constanța', NULL);
-
--- Populare Tabel Furnizori
-INSERT INTO Furnizori (id_furnizor, nume_firma, persoana_contact, telefon, email, adresa, categorie_produse, termeni_colaborare)
-VALUES
-  (1, 'AutoPiese SRL', 'Gheorghe Popa', '+40751123456', 'office@autopiese.ro', 'Strada Industrială nr. 20, Brașov', 'Piese de schimb auto', 'Termen de plată 30 zile'),
-  (2, 'Piese Milenium', 'Alexandra Mihăilescu', '+40742987654', 'office@piesemillenium.com', 'Calea Ferentari nr. 35, București', 'Accesorii auto', 'Discount 10% pentru comenzi peste 1000 lei'),
-  (3, 'Auto Parts Iași', 'Ionuț Dumitru', '+40731456789', 'office@autopartsiasi.ro', 'Strada Ștefan cel Mare nr. 50, Iași', 'Piese de schimb auto', 'Livrare gratuită pentru comenzi peste 500 lei');
-
--- Populare Tabel Angajati
-INSERT INTO Angajati (id_angajat, nume, prenume, functie, departament, telefon, email)
-VALUES
-  (1, 'Popescu', 'Andreea', 'Manager Vânzări', 'Vânzări', '+40721234890', 'andreea.popescu@company.com'),
-  (2, 'Ionescu', 'Mihai', 'Consilier Vânzări', 'Vânzări', '+40741987321', 'mihai.ionescu@company.com'),
-  (3, 'Georgescu', 'Mădălina', 'Analist Logistică', 'Logistică', '+40723456789', 'madalina.georgescu@company.com');
-
--- Inserare user angajat (admin)
-INSERT INTO Users (username, password, id_angajat, role, account_created)
-VALUES ('admin', '$2a$10$XYZ...', 1, 'ADMIN', CURRENT_TIMESTAMP);
-
--- Inserare user angajat (manager)
-INSERT INTO Users (username, password, id_angajat, role, account_created)
-VALUES ('manager', '$2a$10$XYZ...', 2, 'MANAGER', CURRENT_TIMESTAMP);
-
--- Inserare user client
-INSERT INTO Users (username, password, id_client, role, account_created)
-VALUES ('client1', '$2a$10$XYZ...', 1, 'CLIENT', CURRENT_TIMESTAMP);
