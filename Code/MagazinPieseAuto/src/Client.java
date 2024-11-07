@@ -1,12 +1,12 @@
 public class Client {
-    private int id_client;
+    private int idCSlient;
     private String nume;
     private String prenume;
     private String telefon;
     private String email;
-    private String tip_client;
+    private String tipClient;
     private String adresa;
-    private String istoric_comenzi;
+    private String istoricComenzi;
 
     // Constructori, getteri, setteri, toString()
 }

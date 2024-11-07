@@ -1,12 +1,12 @@
 public class Furnizor {
-    private int id_furnizor;
-    private String nume_firma;
-    private String persoana_contact;
+    private int idFurnizor;
+    private String numeFirma;
+    private String persoanaContact;
     private String telefon;
     private String email;
     private String adresa;
-    private String categorie_produse;
-    private String termeni_colaborare;
+    private String categorieProduse;
+    private String termeniColaborare;
 
     // Constructori, getteri, setteri, toString()
 }

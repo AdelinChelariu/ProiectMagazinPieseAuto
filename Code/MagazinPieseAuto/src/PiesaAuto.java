@@ -1,16 +1,16 @@
 public class PiesaAuto {
-    private int id_piesa;
-    private String cod_piesa;
+    private int idPiesa;
+    private String codPiesa;
     private String denumire;
     private String producator;
-    private String model_compatibil;
-    private int an_fabricatie;
+    private String modelCompatibil;
+    private int anFabricatie;
     private double pret;
     private int stoc;
-    private String locatie_depozit;
-    private int garantie_luni;
+    private String locatieDepozit;
+    private int garantieLuni;
     private String certificari;
-    private String descriere_tehnica;
+    private String descriereTehnica;
 
     // Constructori, getteri, setteri, toString()
 }
